@@ -8,7 +8,15 @@ public class RockPaperScissors {
 
     }
 
-    Result play(RPSEnum p1, RPSEnum p2){
+    public Result play(RPSEnum p1, RPSEnum p2){
+        if (p1.equals(p2)) {
+            return Result.TIE;
+        }
+        if ((p1.equals(RPSEnum.PAPER) && p2.equals(RPSEnum.ROCK)) ||
+                (p1.equals(RPSEnum.ROCK) && p2.equals(RPSEnum.SCISSORS)) ||
+                (p1.equals(RPSEnum.SCISSORS) && p2.equals(RPSEnum.PAPER))) {
+            return Result.WIN;
+        }
         return Result.LOST;
     }
 }
