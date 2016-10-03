@@ -10,14 +10,12 @@ public class Player {
     private String name;
     private int score;
     private ArrayList<RPSEnum> moves;
-    private int nbmoves;
     private int currentmove;
 
     public Player(String name, ArrayList<RPSEnum> moves){
         this.name = name;
         this.score = 0;
         this.moves = moves;
-        this.nbmoves = this.moves.size();
         this.currentmove = -1;
     }
 
@@ -30,7 +28,6 @@ public class Player {
             if (temp == 1) this.moves.add(RPSEnum.PAPER);
             if (temp == 2) this.moves.add(RPSEnum.SCISSORS);
         }
-        this.nbmoves = 20;
         this.currentmove = -1;
     }
 
@@ -43,7 +40,7 @@ public class Player {
     }
 
     public int getNbmoves() {
-        return this.nbmoves;
+        return this.moves.size();
     }
 
     public RPSEnum getNextMove(){
