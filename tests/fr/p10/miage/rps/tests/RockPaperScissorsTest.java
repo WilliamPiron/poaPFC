@@ -8,6 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import javax.rmi.CORBA.Tie;
+
 import static org.testng.Assert.*;
 
 /**
@@ -35,7 +37,18 @@ public class RockPaperScissorsTest {
     @Parameters({"paper","rock"})
     @Test
     public void testWinPlay(String p1, String p2){
-        assertEquals(rps.play(RPSEnum.valueOf(p1),RPSEnum.valueOf(p2)), Result.LOST);
+        assertEquals(rps.play(RPSEnum.valueOf(p1),RPSEnum.valueOf(p2)), Result.WIN);
     }
 
+    @Parameters({"paper","paper"})
+    @Test
+    public void testTiePlay(String p1, String p2){
+        assertEquals(rps.play(RPSEnum.valueOf(p1),RPSEnum.valueOf(p2)), Result.TIE);
+    }
+
+    @Parameters({"paper","scissors"})
+    @Test
+    public void testLostPlay(String p1, String p2){
+        assertEquals(rps.play(RPSEnum.valueOf(p1),RPSEnum.valueOf(p2)), Result.LOST);
+    }
 }
